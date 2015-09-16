@@ -22,19 +22,19 @@ include_recipe 'apt::default'
 package 'daemon'
 
 # Download the remote DEB file
-remote_file "#{Chef::Config[:file_cache_path]}/jenkins_#{node['jenkins']['master']['version']}_all.deb" do
-  source   node['jenkins']['master']['source']
-  checksum node['jenkins']['master']['checksum'] if node['jenkins']['master']['checksum']
+remote_file "#{Chef::Config[:file_cache_path]}/jenkins_#{node['ws-jenkins']['master']['version']}_all.deb" do
+  source   node['ws-jenkins']['master']['source']
+  checksum node['ws-jenkins']['master']['checksum'] if node['ws-jenkins']['master']['checksum']
   action :create_if_missing
 end
 
 # install the prerequisites for the jenkins-package
 package 'psmisc'
 
-dpkg_package "jenkins_#{node['jenkins']['master']['version']}_all.deb" do
+dpkg_package "jenkins_#{node['ws-jenkins']['master']['version']}_all.deb" do
   options '--force-confdef'
-  source "#{Chef::Config[:file_cache_path]}/jenkins_#{node['jenkins']['master']['version']}_all.deb"
-  version node['jenkins']['master']['version']
+  source "#{Chef::Config[:file_cache_path]}/jenkins_#{node['ws-jenkins']['master']['version']}_all.deb"
+  version node['ws-jenkins']['master']['version']
   notifies :restart, 'service[jenkins]', :delayed
 end
 
@@ -65,20 +65,7 @@ template '/etc/default/jenkins' do
   notifies :restart, 'service[jenkins]', :delayed
 end
 
-service 'jenkins' do
+service 'ws-jenkins' do
   supports status: true, restart: true, reload: true
   action  [:enable, :start]
-end
-
-directory '/etc/service/jenkins' do
-  owner 'root'
-  group 'root'
-  mode '755'
-end
-
-cookbook_file 'service-jenkins-run' do
-  path '/etc/service/jenkins/run'
-  owner 'root'
-  group 'root'
-  mode '755'
 end

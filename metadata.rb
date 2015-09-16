@@ -1,4 +1,4 @@
-name             'jenkins'
+name             'ws-jenkins'
 maintainer       'Christoph Lukas'
 maintainer_email 'christoph.lukas@gmx.net'
 license          'All rights reserved'

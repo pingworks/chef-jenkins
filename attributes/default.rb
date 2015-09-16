@@ -1,16 +1,19 @@
+# Java Home
+default['ws-jenkins']['java']['home'] = '/usr/lib/jvm/default-java'
+
 # Jenkins version
-default['jenkins']['master']['version'] = '1.609.3'
+default['ws-jenkins']['master']['version'] = '1.609.3'
 
 # jenkins config git url
-default['jenkins']['master']['jenkins_config_git_url'] = ''
+default['ws-jenkins']['master']['jenkins_config_git_url'] = ''
 
 # Plugins to install, with exact Version Number
 # (extracted from a real, prototype installation with:
 # java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar
 # -s http://localhost:8080/ list-plugins | sort
 # | sed -r 's;\s{1,}; ;g; s; \([0-9.]{1,}\)$;;g; s;^([a-zA-Z0-9-]{1,}) .* ([0-9.-]{1,})$;["\1", "\2"],;'
-default['jenkins']['master']['plugin_baseurl'] = 'http://mirrors.jenkins-ci.org/plugins/'
-default['jenkins']['master']['plugin_list'] = [
+default['ws-jenkins']['master']['plugin_baseurl'] = 'http://mirrors.jenkins-ci.org/plugins/'
+default['ws-jenkins']['master']['plugin_list'] = [
   ['dashboardintegration', '394+gitdee22fe', 'https://dash.pingworks.net/plugins'],
   ['ant', '1.2'],
   ['antisamy-markup-formatter', '1.1'],
@@ -67,30 +70,30 @@ default['jenkins']['master']['plugin_list'] = [
 ]
 
 # Jenkins installation urls
-default['jenkins']['master']['install_method'] = 'download_deb'
-default['jenkins']['master']['mirror'] = 'http://mirrors.jenkins-ci.org/plugins/'
-default['jenkins']['master']['updatecenter'] = 'http://mirrors.jenkins-ci.org/updates/'
-default['jenkins']['master']['source'] = "http://pkg.jenkins-ci.org/debian-stable/binary/jenkins_#{node['jenkins']['master']['version']}_all.deb"
+default['ws-jenkins']['master']['install_method'] = 'download_deb'
+default['ws-jenkins']['master']['mirror'] = 'http://mirrors.jenkins-ci.org/plugins/'
+default['ws-jenkins']['master']['updatecenter'] = 'http://mirrors.jenkins-ci.org/updates/'
+default['ws-jenkins']['master']['source'] = "http://pkg.jenkins-ci.org/debian-stable/binary/jenkins_#{node['ws-jenkins']['master']['version']}_all.deb"
 
-default['jenkins']['master']['home'] = '/var/lib/jenkins'
-default['jenkins']['master']['log_directory'] = '/var/log/jenkins'
-default['jenkins']['master']['listen_address'] = '0.0.0.0'
-default['jenkins']['master']['port'] = 8080
-default['jenkins']['master']['jenkins_args'] = ''
+default['ws-jenkins']['master']['home'] = '/var/lib/jenkins'
+default['ws-jenkins']['master']['log_directory'] = '/var/log/jenkins'
+default['ws-jenkins']['master']['listen_address'] = '0.0.0.0'
+default['ws-jenkins']['master']['port'] = 8080
+default['ws-jenkins']['master']['jenkins_args'] = ''
 
 # JVM options
-default['jenkins']['master']['jvm_options'] = '-XX:MaxPermSize=1024m -Dorg.eclipse.jetty.server.Request.maxFormContentSize=500000'
-default['jenkins']['slave']['jvm_options'] = '-XX:MaxPermSize=512m'
+default['ws-jenkins']['master']['jvm_options'] = '-XX:MaxPermSize=1024m -Dorg.eclipse.jetty.server.Request.maxFormContentSize=500000'
+default['ws-jenkins']['slave']['jvm_options'] = '-XX:MaxPermSize=512m'
 
 # slave config
-default['jenkins']['slave']['home'] = '/var/lib/jenkins'
-default['jenkins']['slave']['shell'] = '/bin/bash'
-default['jenkins']['slave']['swarm_version'] = '2.0'
-default['jenkins']['slave']['swarm_jar'] = "swarm-client-#{node['jenkins']['slave']['swarm_version']}-jar-with-dependencies.jar"
-default['jenkins']['slave']['swarm_base_url'] = 'maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/2.0/'
-default['jenkins']['slave']['master_url']           = 'http://jenkins:8080'
-default['jenkins']['slave']['jenkins_ui_user']      = 'jenkins-ui-user'
-default['jenkins']['slave']['jenkins_ui_password']  = 'jenkins-ui-password'
-default['jenkins']['slave']['labels']               = ''
-default['jenkins']['slave']['name']                 = ''
-default['jenkins']['slave']['executors']            = '1'
+default['ws-jenkins']['slave']['home'] = '/var/lib/jenkins'
+default['ws-jenkins']['slave']['shell'] = '/bin/bash'
+default['ws-jenkins']['slave']['swarm_version'] = '2.0'
+default['ws-jenkins']['slave']['swarm_jar'] = "swarm-client-#{node['ws-jenkins']['slave']['swarm_version']}-jar-with-dependencies.jar"
+default['ws-jenkins']['slave']['swarm_base_url'] = 'http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/2.0/'
+default['ws-jenkins']['slave']['master_url']           = 'http://jkmaster:8080'
+default['ws-jenkins']['slave']['jenkins_ui_user']      = 'jenkins-ui-user'
+default['ws-jenkins']['slave']['jenkins_ui_password']  = 'jenkins-ui-password'
+default['ws-jenkins']['slave']['labels']               = ''
+default['ws-jenkins']['slave']['name']                 = ''
+default['ws-jenkins']['slave']['executors']            = '1'

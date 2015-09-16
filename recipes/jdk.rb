@@ -1,4 +1,6 @@
-package 'openjdk-7-jdk'
+package 'openjdk-7-jdk' do
+  options '--no-install-recommends'
+end
 
 jdk_dir = "java-7-openjdk-amd64"
 link '/usr/lib/jvm/default-java' do
