@@ -7,8 +7,8 @@ end
 
 directory '/var/lib/jenkins/plugins' do
   mode '0755'
-  owner 'ws-jenkins'
-  group 'ws-jenkins'
+  owner 'jenkins'
+  group 'jenkins'
 end
 
 # Please define the exact plugin_list in the attributes/default.rb file

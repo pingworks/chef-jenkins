@@ -1,5 +1,5 @@
 source "https://supermarket.chef.io"
 
-cookbook 'base', path: '../chef-base'
+cookbook 'ws-base', path: '../chef-ws-base'
 
 metadata

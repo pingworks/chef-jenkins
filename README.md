@@ -1,4 +1,4 @@
-# jenkins-cookbook
+# ws-jenkins-cookbook
 
 Installs jenkins
 
@@ -27,12 +27,12 @@ Ubuntu 14.04
 
 ### jenkins::default
 
-Include `jenkins` in your node's `run_list`:
+Include `ws-jenkins` in your node's `run_list`:
 
 ```json
 {
   "run_list": [
-    "recipe[jenkins::default]"
+    "recipe[ws-jenkins::default]"
   ]
 }
 ```

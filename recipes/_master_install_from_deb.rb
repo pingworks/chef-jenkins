@@ -65,7 +65,7 @@ template '/etc/default/jenkins' do
   notifies :restart, 'service[jenkins]', :delayed
 end
 
-service 'ws-jenkins' do
+service 'jenkins' do
   supports status: true, restart: true, reload: true
   action  [:enable, :start]
 end
