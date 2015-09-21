@@ -79,7 +79,7 @@ default['ws-jenkins']['master']['home'] = '/var/lib/jenkins'
 default['ws-jenkins']['master']['log_directory'] = '/var/log/jenkins'
 default['ws-jenkins']['master']['listen_address'] = '0.0.0.0'
 default['ws-jenkins']['master']['port'] = 8080
-default['ws-jenkins']['master']['jenkins_args'] = ''
+default['ws-jenkins']['master']['jenkins_args'] = '--prefix=/jenkins'
 
 # JVM options
 default['ws-jenkins']['master']['jvm_options'] = '-XX:MaxPermSize=1024m -Dorg.eclipse.jetty.server.Request.maxFormContentSize=500000'

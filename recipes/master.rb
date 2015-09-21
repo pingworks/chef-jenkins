@@ -12,3 +12,5 @@ include_recipe 'ws-jenkins::_master_install_plugins'
 
 # Make sure that jenkins is up and running...
 include_recipe 'ws-jenkins::_master_ensure_jenkins_up'
+
+include_recipe 'ws-jenkins::_master_setup_apache_proxy'
