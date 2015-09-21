@@ -1,5 +1,3 @@
-include_recipe 'ws-base'
-
 include_recipe 'ws-jenkins::jdk'
 
 include_recipe 'ws-jenkins::_slave_install'

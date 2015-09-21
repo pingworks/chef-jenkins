@@ -3,8 +3,6 @@
 # Recipe:: master
 # Author: Alexander Birk
 #
-include_recipe 'ws-base'
-
 include_recipe 'ws-jenkins::jdk'
 
 include_recipe 'ws-jenkins::_master_install_from_deb'
