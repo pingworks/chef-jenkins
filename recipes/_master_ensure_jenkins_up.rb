@@ -1,8 +1,3 @@
-execute 'start-jenkins' do
-  command 'echo w00t'
-  notifies :start, 'service[jenkins]', :immediately
-end
-
 bash 'ensure jenkins is up and running' do
   user 'root'
   cwd '/tmp'

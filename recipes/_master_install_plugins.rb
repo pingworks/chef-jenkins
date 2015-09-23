@@ -47,6 +47,11 @@ plugins_to_be_installed.each_with_index do |plugin, i|
   Chef::Log.info "Now installing Jenkins Plugin #{plugin[0]}@#{plugin[1]} from #{baseurl}"
   remote_file "/var/lib/jenkins/plugins/#{plugin[0]}.hpi" do
     source "#{baseurl}/#{plugin[0]}/#{plugin[1]}/#{plugin[0]}.hpi"
-    notifies :restart, 'service[jenkins]', :delayed if i == plugins_to_be_installed.size - 1
   end
+end
+
+execute 'restart-jenkins' do
+  command 'echo w00t'
+  notifies :restart, 'service[jenkins]', :immediately
+  not_if plugins_to_be_installed.size == 0
 end
