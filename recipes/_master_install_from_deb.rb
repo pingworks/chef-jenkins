@@ -69,3 +69,9 @@ service 'jenkins' do
   supports status: true, restart: true, reload: true
   action  [:enable, :start]
 end
+
+directory '/var/lib/jenkins/build.properties' do
+  owner 'jenkins'
+  group 'jenkins'
+  mode '755'
+end

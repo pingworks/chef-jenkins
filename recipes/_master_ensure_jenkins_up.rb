@@ -8,7 +8,7 @@ bash 'ensure jenkins is up and running' do
   while [ $I -le $WAITMAX ];do
     T=$(date)
     echo "$T: wait $I" >> /tmp/debug.txt
-    if java -jar /usr/local/lib/jenkins/jenkins-cli.jar -s http://localhost:8080/ version >/dev/null 2>&1;then
+    if java -jar /usr/local/lib/jenkins/jenkins-cli.jar -s #{node['ws-jenkins']['slave']['master_url']} version >/dev/null 2>&1;then
       echo "$T: Jenkins up!" >> /tmp/debug.txt
       JENKINS_UP=1
       break

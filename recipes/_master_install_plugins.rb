@@ -50,8 +50,9 @@ plugins_to_be_installed.each_with_index do |plugin, i|
   end
 end
 
-execute 'restart-jenkins' do
-  command 'echo w00t'
-  notifies :restart, 'service[jenkins]', :immediately
-  not_if plugins_to_be_installed.size == 0
+if (plugins_to_be_installed.size >= 0) then
+  execute 'restart-jenkins' do
+    command 'echo w00t'
+    notifies :restart, 'service[jenkins]', :immediately
+  end
 end
