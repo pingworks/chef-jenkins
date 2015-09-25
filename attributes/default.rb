@@ -16,6 +16,7 @@ default['ws-jenkins']['master']['plugin_baseurl'] = 'http://mirrors.jenkins-ci.o
 default['ws-jenkins']['master']['plugin_list'] = [
   ['dashboardintegration', '394+gitdee22fe', 'https://dash.pingworks.net/plugins'],
   ['ant', '1.2'],
+  ['ansicolor', '0.4.1'],
   ['antisamy-markup-formatter', '1.1'],
   ['build-flow-plugin', '0.18'],
   ['build-name-setter', '1.3'],
