@@ -98,3 +98,13 @@ default['ws-jenkins']['slave']['jenkins_ui_password']  = 'jenkins-ui-password'
 default['ws-jenkins']['slave']['labels']               = ''
 default['ws-jenkins']['slave']['name']                 = ''
 default['ws-jenkins']['slave']['executors']            = '1'
+
+default['ws-jenkins']['chefdk']['url'] = 'https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb'
+default['ws-jenkins']['chefdk']['sha256'] = '58b2e95768427f479b2114e02c924af1c51ed6b98fce829b439cc90692c3ca64'
+
+default['ws-jenkins']['kitchen']['os_url'] = "#{node['ws-base']['os_url']}"
+default['ws-jenkins']['kitchen']['os_user'] = "#{node['ws-base']['os_user']}"
+default['ws-jenkins']['kitchen']['os_pass'] = "#{node['ws-base']['os_pass']}"
+default['ws-jenkins']['kitchen']['os_keyname'] = "#{node['ws-base']['os_keyname']}"
+default['ws-jenkins']['kitchen']['os_img'] = 'pingworks/docker-ws-baseimg:0.2'
+default['ws-jenkins']['kitchen']['os_flavor'] = 'm1.tiny'

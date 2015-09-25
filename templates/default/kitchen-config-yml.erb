@@ -1,0 +1,10 @@
+---
+driver:
+  name: openstack
+  openstack_username: <%= node['ws-jenkins']['kitchen']['os_user'] %>
+  openstack_api_key: <%= node['ws-jenkins']['kitchen']['os_pass'] %>
+  key_name: <%= node['ws-jenkins']['kitchen']['os_keyname'] %>
+  openstack_auth_url: <%= node['ws-jenkins']['kitchen']['os_url'] %>
+  require_chef_omnibus: False
+  image_ref: <%= node['ws-jenkins']['kitchen']['os_img'] %>
+  flavor_ref: <%= node['ws-jenkins']['kitchen']['os_flavor'] %>

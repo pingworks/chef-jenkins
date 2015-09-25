@@ -14,3 +14,5 @@ include_recipe 'ws-jenkins::_master_install_plugins'
 include_recipe 'ws-jenkins::_master_ensure_jenkins_up'
 
 include_recipe 'ws-jenkins::_master_setup_apache_proxy'
+
+include_recipe 'ws-jenkins::kitchen-openstack'
