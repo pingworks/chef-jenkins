@@ -107,4 +107,4 @@ default['ws-jenkins']['kitchen']['os_user'] = "#{node['ws-base']['os_user']}"
 default['ws-jenkins']['kitchen']['os_pass'] = "#{node['ws-base']['os_pass']}"
 default['ws-jenkins']['kitchen']['os_keyname'] = "#{node['ws-base']['os_keyname']}"
 default['ws-jenkins']['kitchen']['os_img'] = 'pingworks/docker-ws-baseimg:0.2'
-default['ws-jenkins']['kitchen']['os_flavor'] = 'm1.tiny'
+default['ws-jenkins']['kitchen']['os_flavor'] = 'default'
