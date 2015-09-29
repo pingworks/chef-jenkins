@@ -16,3 +16,6 @@ include_recipe 'ws-jenkins::_master_ensure_jenkins_up'
 include_recipe 'ws-jenkins::_master_setup_apache_proxy'
 
 include_recipe 'ws-jenkins::kitchen-openstack'
+include_recipe 'ws-jenkins::_install_openstackclients'
+include_recipe 'ws-jenkins::_install_mofa'
+include_recipe 'ws-jenkins::cookbook_repo'

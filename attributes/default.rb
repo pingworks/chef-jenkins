@@ -108,3 +108,9 @@ default['ws-jenkins']['kitchen']['os_pass'] = "#{node['ws-base']['os_pass']}"
 default['ws-jenkins']['kitchen']['os_keyname'] = "#{node['ws-base']['os_keyname']}"
 default['ws-jenkins']['kitchen']['os_img'] = 'pingworks/docker-ws-baseimg:0.2'
 default['ws-jenkins']['kitchen']['os_flavor'] = 'default'
+
+default['ws-jenkins']['openstack_pkgs'] = %w(python-neutronclient python-novaclient python-openstackclient python-designateclient)
+
+default['ws-jenkins']['cookbook-repo']['dir'] = '/data/cookbooks'
+default['ws-jenkins']['cookbook-repo']['owner'] = 'jenkins'
+default['ws-jenkins']['cookbook-repo']['group'] = 'jenkins'
