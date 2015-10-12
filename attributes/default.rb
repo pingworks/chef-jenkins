@@ -1,19 +1,19 @@
 # Java Home
-default['ws-jenkins']['java']['home'] = '/usr/lib/jvm/default-java'
+default['pw_jenkins']['java']['home'] = '/usr/lib/jvm/default-java'
 
 # Jenkins version
-default['ws-jenkins']['master']['version'] = '1.609.3'
+default['pw_jenkins']['master']['version'] = '1.609.3'
 
 # jenkins config git url
-default['ws-jenkins']['master']['jenkins_config_git_url'] = ''
+default['pw_jenkins']['master']['jenkins_config_git_url'] = ''
 
 # Plugins to install, with exact Version Number
 # (extracted from a real, prototype installation with:
 # java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar
 # -s http://localhost:8080/ list-plugins | sort
 # | sed -r 's;\s{1,}; ;g; s; \([0-9.]{1,}\)$;;g; s;^([a-zA-Z0-9-]{1,}) .* ([0-9.-]{1,})$;["\1", "\2"],;'
-default['ws-jenkins']['master']['plugin_baseurl'] = 'http://mirrors.jenkins-ci.org/plugins/'
-default['ws-jenkins']['master']['plugin_list'] = [
+default['pw_jenkins']['master']['plugin_baseurl'] = 'http://mirrors.jenkins-ci.org/plugins/'
+default['pw_jenkins']['master']['plugin_list'] = [
   ['dashboardintegration', '394+gitdee22fe', 'https://dash.pingworks.net/plugins'],
   ['ant', '1.2'],
   ['ansicolor', '0.4.1'],
@@ -43,6 +43,7 @@ default['ws-jenkins']['master']['plugin_list'] = [
   ['ldap', '1.11'],
   ['m2release', '0.14.0'],
   ['mailer', '1.15'],
+  ['mapdb-api', '1.0.1.0'],
   ['matrix-auth', '1.2'],
   ['matrix-project', '1.6'],
   ['maven-info', '0.2.0'],
@@ -71,46 +72,48 @@ default['ws-jenkins']['master']['plugin_list'] = [
 ]
 
 # Jenkins installation urls
-default['ws-jenkins']['master']['install_method'] = 'download_deb'
-default['ws-jenkins']['master']['mirror'] = 'http://mirrors.jenkins-ci.org/plugins/'
-default['ws-jenkins']['master']['updatecenter'] = 'http://mirrors.jenkins-ci.org/updates/'
-default['ws-jenkins']['master']['source'] = "http://pkg.jenkins-ci.org/debian-stable/binary/jenkins_#{node['ws-jenkins']['master']['version']}_all.deb"
+default['pw_jenkins']['master']['install_method'] = 'download_deb'
+default['pw_jenkins']['master']['mirror'] = 'http://mirrors.jenkins-ci.org/plugins/'
+default['pw_jenkins']['master']['updatecenter'] = 'http://mirrors.jenkins-ci.org/updates/'
+default['pw_jenkins']['master']['source'] = "http://pkg.jenkins-ci.org/debian-stable/binary/jenkins_#{node['pw_jenkins']['master']['version']}_all.deb"
 
-default['ws-jenkins']['master']['home'] = '/var/lib/jenkins'
-default['ws-jenkins']['master']['log_directory'] = '/var/log/jenkins'
-default['ws-jenkins']['master']['listen_address'] = '0.0.0.0'
-default['ws-jenkins']['master']['port'] = 8080
-default['ws-jenkins']['master']['jenkins_args'] = '--prefix=/jenkins'
+default['pw_jenkins']['master']['home'] = '/var/lib/jenkins'
+default['pw_jenkins']['master']['log_directory'] = '/var/log/jenkins'
+default['pw_jenkins']['master']['listen_address'] = '0.0.0.0'
+default['pw_jenkins']['master']['port'] = 8080
+default['pw_jenkins']['master']['jenkins_args'] = '--prefix=/jenkins'
+default['pw_jenkins']['master']['url'] = 'http://localhost:8080/jenkins'
 
 # JVM options
-default['ws-jenkins']['master']['jvm_options'] = '-XX:MaxPermSize=1024m -Dorg.eclipse.jetty.server.Request.maxFormContentSize=500000'
-default['ws-jenkins']['slave']['jvm_options'] = '-XX:MaxPermSize=512m'
+default['pw_jenkins']['master']['jvm_options'] = '-XX:MaxPermSize=1024m -Dorg.eclipse.jetty.server.Request.maxFormContentSize=500000'
+default['pw_jenkins']['slave']['jvm_options'] = '-XX:MaxPermSize=512m'
 
 # slave config
-default['ws-jenkins']['slave']['home'] = '/var/lib/jenkins'
-default['ws-jenkins']['slave']['shell'] = '/bin/bash'
-default['ws-jenkins']['slave']['swarm_version'] = '2.0'
-default['ws-jenkins']['slave']['swarm_jar'] = "swarm-client-#{node['ws-jenkins']['slave']['swarm_version']}-jar-with-dependencies.jar"
-default['ws-jenkins']['slave']['swarm_base_url'] = 'http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/2.0/'
-default['ws-jenkins']['slave']['master_url']           = 'http://jkmaster:8080/jenkins'
-default['ws-jenkins']['slave']['jenkins_ui_user']      = 'jenkins-ui-user'
-default['ws-jenkins']['slave']['jenkins_ui_password']  = 'jenkins-ui-password'
-default['ws-jenkins']['slave']['labels']               = ''
-default['ws-jenkins']['slave']['name']                 = ''
-default['ws-jenkins']['slave']['executors']            = '1'
+default['pw_jenkins']['slave']['home'] = '/var/lib/jenkins'
+default['pw_jenkins']['slave']['shell'] = '/bin/bash'
+default['pw_jenkins']['slave']['swarm_version'] = '2.0'
+default['pw_jenkins']['slave']['swarm_jar'] = "swarm-client-#{node['pw_jenkins']['slave']['swarm_version']}-jar-with-dependencies.jar"
+default['pw_jenkins']['slave']['swarm_base_url'] = 'http://maven.jenkins-ci.org/content/repositories/releases/org/jenkins-ci/plugins/swarm-client/2.0/'
+default['pw_jenkins']['slave']['master_url']           = 'http://jkmaster:8080/jenkins'
+default['pw_jenkins']['slave']['jenkins_ui_user']      = 'jenkins-ui-user'
+default['pw_jenkins']['slave']['jenkins_ui_password']  = 'jenkins-ui-password'
+default['pw_jenkins']['slave']['labels']               = ''
+default['pw_jenkins']['slave']['name']                 = ''
+default['pw_jenkins']['slave']['executors']            = '1'
+default['pw_jenkins']['slave']['options']              = '-disableClientsUniqueId'
 
-default['ws-jenkins']['chefdk']['url'] = 'https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb'
-default['ws-jenkins']['chefdk']['sha256'] = '58b2e95768427f479b2114e02c924af1c51ed6b98fce829b439cc90692c3ca64'
+default['pw_jenkins']['chefdk']['url'] = 'https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb'
+default['pw_jenkins']['chefdk']['sha256'] = '58b2e95768427f479b2114e02c924af1c51ed6b98fce829b439cc90692c3ca64'
 
-default['ws-jenkins']['kitchen']['os_url'] = "#{node['ws-base']['os_url']}"
-default['ws-jenkins']['kitchen']['os_user'] = "#{node['ws-base']['os_user']}"
-default['ws-jenkins']['kitchen']['os_pass'] = "#{node['ws-base']['os_pass']}"
-default['ws-jenkins']['kitchen']['os_keyname'] = "#{node['ws-base']['os_keyname']}"
-default['ws-jenkins']['kitchen']['os_img'] = 'pingworks/docker-ws-baseimg:0.2'
-default['ws-jenkins']['kitchen']['os_flavor'] = 'default'
+default['pw_jenkins']['kitchen']['os_url'] = "#{node['pw_base']['os_url']}"
+default['pw_jenkins']['kitchen']['os_user'] = "#{node['pw_base']['os_user']}"
+default['pw_jenkins']['kitchen']['os_pass'] = "#{node['pw_base']['os_pass']}"
+default['pw_jenkins']['kitchen']['os_keyname'] = "#{node['pw_base']['os_keyname']}"
+default['pw_jenkins']['kitchen']['os_img'] = 'pingworks/docker-pw_baseimg:0.2'
+default['pw_jenkins']['kitchen']['os_flavor'] = 'default'
 
-default['ws-jenkins']['openstack_pkgs'] = %w(python-neutronclient python-novaclient python-openstackclient python-designateclient)
+default['pw_jenkins']['openstack_pkgs'] = %w(python-neutronclient python-novaclient python-openstackclient python-designateclient)
 
-default['ws-jenkins']['cookbook-repo']['dir'] = '/data/cookbooks'
-default['ws-jenkins']['cookbook-repo']['owner'] = 'jenkins'
-default['ws-jenkins']['cookbook-repo']['group'] = 'jenkins'
+default['pw_jenkins']['cookbook-repo']['dir'] = '/data/cookbooks'
+default['pw_jenkins']['cookbook-repo']['owner'] = 'jenkins'
+default['pw_jenkins']['cookbook-repo']['group'] = 'jenkins'

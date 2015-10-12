@@ -3,19 +3,15 @@
 # Recipe:: master
 # Author: Alexander Birk
 #
-include_recipe 'ws-jenkins::jdk'
+include_recipe 'apt'
+include_recipe 'pw_jenkins::jdk'
 
-include_recipe 'ws-jenkins::_master_install_from_deb'
+include_recipe 'pw_jenkins::_master_install_from_deb'
 
 # Install all plugins with correct versions
-include_recipe 'ws-jenkins::_master_install_plugins'
+include_recipe 'pw_jenkins::_master_install_plugins'
 
 # Make sure that jenkins is up and running...
-include_recipe 'ws-jenkins::_master_ensure_jenkins_up'
+include_recipe 'pw_jenkins::_master_ensure_jenkins_up'
 
-include_recipe 'ws-jenkins::_master_setup_apache_proxy'
-
-include_recipe 'ws-jenkins::kitchen-openstack'
-include_recipe 'ws-jenkins::_install_openstackclients'
-include_recipe 'ws-jenkins::_install_mofa'
-include_recipe 'ws-jenkins::cookbook_repo'
+include_recipe 'pw_jenkins::_master_setup_apache_proxy'

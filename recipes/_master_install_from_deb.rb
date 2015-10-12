@@ -20,21 +20,22 @@
 include_recipe 'apt::default'
 
 package 'daemon'
+package 'unzip'
 
 # Download the remote DEB file
-remote_file "#{Chef::Config[:file_cache_path]}/jenkins_#{node['ws-jenkins']['master']['version']}_all.deb" do
-  source   node['ws-jenkins']['master']['source']
-  checksum node['ws-jenkins']['master']['checksum'] if node['ws-jenkins']['master']['checksum']
+remote_file "#{Chef::Config[:file_cache_path]}/jenkins_#{node['pw_jenkins']['master']['version']}_all.deb" do
+  source   node['pw_jenkins']['master']['source']
+  checksum node['pw_jenkins']['master']['checksum'] if node['pw_jenkins']['master']['checksum']
   action :create_if_missing
 end
 
 # install the prerequisites for the jenkins-package
 package 'psmisc'
 
-dpkg_package "jenkins_#{node['ws-jenkins']['master']['version']}_all.deb" do
+dpkg_package "jenkins_#{node['pw_jenkins']['master']['version']}_all.deb" do
   options '--force-confdef'
-  source "#{Chef::Config[:file_cache_path]}/jenkins_#{node['ws-jenkins']['master']['version']}_all.deb"
-  version node['ws-jenkins']['master']['version']
+  source "#{Chef::Config[:file_cache_path]}/jenkins_#{node['pw_jenkins']['master']['version']}_all.deb"
+  version node['pw_jenkins']['master']['version']
   notifies :restart, 'service[jenkins]', :delayed
 end
 

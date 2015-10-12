@@ -16,19 +16,20 @@ set -e
 
 NAME=jenkins-swarm-slave
 USER=jenkins
-HOME="<%= node['ws-jenkins']['slave']['home'] %>"
+HOME="<%= node['pw_jenkins']['slave']['home'] %>"
 JAR="${HOME}/swarm-slave.jar"
 JAVA_ARGS=""
 LOG="/var/log/jenkins/${NAME}.log"
-MASTER=<%= node['ws-jenkins']['slave']['master_url'] %>
-USERNAME=<%= node['ws-jenkins']['slave']['jenkins_ui_user'] %>
-PASSWORD=<%= node['ws-jenkins']['slave']['jenkins_ui_password'] %>
+MASTER=<%= node['pw_jenkins']['slave']['master_url'] %>
+USERNAME=<%= node['pw_jenkins']['slave']['jenkins_ui_user'] %>
+PASSWORD=<%= node['pw_jenkins']['slave']['jenkins_ui_password'] %>
 
 # Swarm slave option
 DESCRIPTION="Jenkins Swarm Slave Description missing.."
-EXECUTORS=<%= node['ws-jenkins']['slave']['executors'] %>
+EXECUTORS=<%= node['pw_jenkins']['slave']['executors'] %>
 FSROOT=${HOME}
-LABELS="Swarm <%= node['ws-jenkins']['slave']['labels'] %>"
+LABELS="Swarm <%= node['pw_jenkins']['slave']['labels'] %>"
+CLIENTOPTIONS=""
 
 # Read defaults
 . /etc/default/${NAME}
@@ -37,7 +38,8 @@ OPTS="-description \"${DESCRIPTION}\" \
       -executors ${EXECUTORS} \
       -master ${MASTER} \
       -fsroot ${FSROOT} \
-      -labels \"${LABELS}\""
+      -labels \"${LABELS}\"\
+      $CLIENTOPTIONS"
 
 if [ -n "$CLIENTNAME" ]; then
   OPTS="${OPTS} \
