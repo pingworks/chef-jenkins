@@ -9,6 +9,9 @@ ssh_keyfile: ~/.ssh/id_rsa
 # where to build tmporary cookbook packages and so on
 tmp_dir: /var/tmp
 
+service_hostlist_url: file:///var/lib/jenkins/hostlist.json
+service_hostlist_default_filter: "*.pingworks.net"
+
 # The cookbook architectural pattern should becodified by following
 # a coonaming schema:
 # * Cookbooks beginning with "env_*" are Envrionment Cookbooks
