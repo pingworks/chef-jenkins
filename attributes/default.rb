@@ -101,19 +101,3 @@ default['pw_jenkins']['slave']['labels']               = ''
 default['pw_jenkins']['slave']['name']                 = ''
 default['pw_jenkins']['slave']['executors']            = '1'
 default['pw_jenkins']['slave']['options']              = '-disableClientsUniqueId'
-
-default['pw_jenkins']['chefdk']['url'] = 'https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.7.0-1_amd64.deb'
-default['pw_jenkins']['chefdk']['sha256'] = '58b2e95768427f479b2114e02c924af1c51ed6b98fce829b439cc90692c3ca64'
-
-default['pw_jenkins']['kitchen']['os_url'] = "#{node['pw_base']['os_url']}"
-default['pw_jenkins']['kitchen']['os_user'] = "#{node['pw_base']['os_user']}"
-default['pw_jenkins']['kitchen']['os_pass'] = "#{node['pw_base']['os_pass']}"
-default['pw_jenkins']['kitchen']['os_keyname'] = "#{node['pw_base']['os_keyname']}"
-default['pw_jenkins']['kitchen']['os_img'] = 'pingworks/docker-pw_baseimg:0.2'
-default['pw_jenkins']['kitchen']['os_flavor'] = 'default'
-
-default['pw_jenkins']['openstack_pkgs'] = %w(python-neutronclient python-novaclient python-openstackclient python-designateclient)
-
-default['pw_jenkins']['cookbook-repo']['dir'] = '/data/cookbooks'
-default['pw_jenkins']['cookbook-repo']['owner'] = 'jenkins'
-default['pw_jenkins']['cookbook-repo']['group'] = 'jenkins'
