@@ -37,6 +37,7 @@ join=1.16
 jquery=1.11.2-0
 junit=1.2-beta-4
 ldap=1.11
+locale=1.2
 m2release=0.14.0
 mailer=1.15
 mapdb-api=1.0.1.0
@@ -84,5 +85,5 @@ rm $P_EXP
    run bash -c "java -jar /usr/local/lib/jenkins/jenkins-cli.jar -s http://localhost:8080/jenkins/ list-plugins | wc -l"
    echo "$output"
   [ "$status" -eq 0 ]
-  [ "$output" = "56" ]
+  [ "$output" = "57" ]
 }

@@ -41,6 +41,7 @@ default['pw_jenkins']['master']['plugin_list'] = [
   ['join', '1.16'],
   ['jquery', '1.11.2-0'],
   ['ldap', '1.11'],
+  ['locale', '1.2'],
   ['m2release', '0.14.0'],
   ['mailer', '1.15'],
   ['mapdb-api', '1.0.1.0'],
