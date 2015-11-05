@@ -14,7 +14,7 @@ default['pw_jenkins']['master']['jenkins_config_git_url'] = ''
 # | sed -r 's;\s{1,}; ;g; s; \([0-9.]{1,}\)$;;g; s;^([a-zA-Z0-9-]{1,}) .* ([0-9.-]{1,})$;["\1", "\2"],;'
 default['pw_jenkins']['master']['plugin_baseurl'] = 'http://mirrors.jenkins-ci.org/plugins/'
 default['pw_jenkins']['master']['plugin_list'] = [
-  ['dashboardintegration', '394+gitdee22fe', 'https://dash.pingworks.net/plugins'],
+  ['dashboardintegration', '446+gita0fb148', 'https://dash.pingworks.net/plugins'],
   ['ant', '1.2'],
   ['ansicolor', '0.4.1'],
   ['antisamy-markup-formatter', '1.1'],
