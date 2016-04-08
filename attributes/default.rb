@@ -1,4 +1,8 @@
+# Apache Proxy
+default['pw_jenkins']['apache_proxy']['install'] = true
+
 # Java Home
+default['pw_jenkins']['java']['install'] = true
 default['pw_jenkins']['java']['home'] = '/usr/lib/jvm/default-java'
 
 # Jenkins version
@@ -9,9 +13,7 @@ default['pw_jenkins']['master']['jenkins_config_git_url'] = ''
 
 # Plugins to install, with exact Version Number
 # (extracted from a real, prototype installation with:
-# java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar
-# -s http://localhost:8080/ list-plugins | sort
-# | sed -r 's;\s{1,}; ;g; s; \([0-9.]{1,}\)$;;g; s;^([a-zA-Z0-9-]{1,}) .* ([0-9.-]{1,})$;["\1", "\2"],;'
+# java -jar /var/cache/jenkins/war/WEB-INF/jenkins-cli.jar -s http://localhost:8080/jenkins/ list-plugins | sort | sed -r "s;\s{1,}; ;g; s; \([0-9.]{1,}\)$;;g; s;^([a-zA-Z0-9-]{1,}) .* ([0-9.-]{1,})$;['\1', '\2'],;"
 default['pw_jenkins']['master']['plugin_baseurl'] = 'http://mirrors.jenkins-ci.org/plugins/'
 default['pw_jenkins']['master']['plugin_list'] = [
   ['dashboardintegration', '446+gita0fb148', 'https://dash.pingworks.net/plugins'],

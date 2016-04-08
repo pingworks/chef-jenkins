@@ -21,6 +21,10 @@ include_recipe 'apt::default'
 
 package 'daemon'
 package 'unzip'
+node['pw_jenkins']['master']['source']
+
+
+Chef::Log.info("Downloading jenkins deb from #{node['pw_jenkins']['master']['source']} to #{Chef::Config[:file_cache_path]}/jenkins_#{node['pw_jenkins']['master']['version']}_all.deb")
 
 # Download the remote DEB file
 remote_file "#{Chef::Config[:file_cache_path]}/jenkins_#{node['pw_jenkins']['master']['version']}_all.deb" do

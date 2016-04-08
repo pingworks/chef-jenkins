@@ -4,7 +4,10 @@
 # Author: Alexander Birk
 #
 include_recipe 'apt'
-include_recipe 'pw_jenkins::jdk'
+
+if node['pw_jenkins']['java']['install'] == true
+  include_recipe 'pw_jenkins::jdk'
+end
 
 include_recipe 'pw_jenkins::_master_install_from_deb'
 
@@ -14,4 +17,6 @@ include_recipe 'pw_jenkins::_master_install_plugins'
 # Make sure that jenkins is up and running...
 include_recipe 'pw_jenkins::_master_ensure_jenkins_up'
 
-include_recipe 'pw_jenkins::_master_setup_apache_proxy'
+if node['pw_jenkins']['apache_proxy']['install'] == true
+  include_recipe 'pw_jenkins::_master_setup_apache_proxy'
+end

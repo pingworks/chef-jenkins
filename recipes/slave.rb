@@ -1,5 +1,8 @@
 include_recipe 'apt'
-include_recipe 'pw_jenkins::jdk'
+
+if node['pw_jenkins']['java']['install'] == true
+  include_recipe 'pw_jenkins::jdk'
+end
 
 include_recipe 'pw_jenkins::_slave_install'
 
