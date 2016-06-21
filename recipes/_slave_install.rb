@@ -36,7 +36,10 @@ template '/etc/init.d/jenkins-swarm-slave' do
 end
 
 template '/etc/default/jenkins-swarm-slave' do
-  if node['pw_jenkins']['slave']['name'] == '' && node['pw_base']['cname'] != ''
+  if node['pw_jenkins']['slave']['name'] == '' \
+    && node.key?('pw_base') \
+    && node['pw_base'].key?('cname') \
+    && node['pw_base']['cname'] != ''
     node.default['pw_jenkins']['slave']['name'] = node['pw_base']['cname']
   end
   source 'slave_default_file.erb'
