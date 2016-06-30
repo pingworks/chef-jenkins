@@ -43,6 +43,18 @@ dpkg_package "jenkins_#{node['pw_jenkins']['master']['version']}_all.deb" do
   notifies :restart, 'service[jenkins]', :delayed
 end
 
+template "#{node['pw_jenkins']['master']['home']}/jenkins.install.InstallUtil.lastExecVersion" do
+  owner 'jenkins'
+  group 'jenkins'
+  mode 00644
+end
+
+cookbook_file "#{node['pw_jenkins']['master']['home']}/config.xml" do
+  owner 'jenkins'
+  group 'jenkins'
+  mode 00644
+end
+
 # cp jenkins-cli.jar to /usr/local/lib/jenkins/jenkins-cli.jar
 directory '/usr/local/lib/jenkins' do
   owner 'root'
